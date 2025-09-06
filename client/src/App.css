@@ -1,11 +1,9 @@
-/* --- Google Font Import --- */
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
 body {
   margin: 0;
-  /* Using the new font */
   font-family: 'Poppins', sans-serif;
-  /* --- ENHANCEMENT: Switched to a subtle gradient background --- */
   background: linear-gradient(120deg, #1f2937, #111827);
   color: #e5e7eb;
   text-align: center;
@@ -22,7 +20,6 @@ body {
   margin: 0;
   font-size: 3.5rem;
   font-weight: 700;
-  /* --- ENHANCEMENT: Gradient text effect --- */
   background: -webkit-linear-gradient(45deg, #38bdf8, #a78bfa, #f472b6);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -62,7 +59,6 @@ body {
   padding: 15px 30px;
   border: none;
   border-radius: 8px;
-  /* --- ENHANCEMENT: New button color --- */
   background-color: #38bdf8;
   color: #111827;
   font-size: 1.1rem;
@@ -97,12 +93,12 @@ body {
   overflow: hidden;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   text-align: left;
-  position: relative; /* Needed for the image overlay */
-  /* --- ENHANCEMENT: Smooth transition for hover effect --- */
+  position: relative; 
+
   transition: all 0.3s ease-in-out;
 }
 
-/* --- ENHANCEMENT: Card hover effect --- */
+
 .recipe-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
@@ -115,7 +111,7 @@ body {
   display: block;
 }
 
-/* --- ENHANCEMENT: Gradient overlay on image for text legibility --- */
+
 .recipe-card .title-overlay {
   position: absolute;
   bottom: 0;
@@ -166,32 +162,31 @@ body {
 .loading-message,
 .error-message,
 .no-results-message {
-  font-size: 1.2rem;
-  color: #a0aec0; /* Cool Gray 400 */
+  font-size: 1.2rem; 
 }
 
 .error-message {
-  color: #f56565; /* Red 500 */
+  color: #f56565;
 }
 
 .app-footer {
   margin-top: 4rem;
   padding: 1rem;
   text-align: center;
-  color: #718096; /* Cool Gray 500 */
-  border-top: 1px solid #4a5568; /* Cool Gray 700 */
+  color: #718096; 
+  border-top: 1px solid #4a5568; 
 }
 
 .app-footer a {
-  color: #63b3ed; /* Blue 400 */
+  color: #63b3ed; 
   text-decoration: none;
   transition: color 0.2s ease-in-out;
 }
 
 .app-footer a:hover {
-  color: #90cdf4; /* Blue 300 */
+  color: #90cdf4; 
 }
 
-/* Make sure you keep all your other styles for .App, .search-form, .recipe-grid, etc. */
-/* Just add these new classes to your existing file. */
+
+
 

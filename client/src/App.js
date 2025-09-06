@@ -4,19 +4,19 @@ import './App.css';
 function App() {
   const [ingredients, setIngredients] = useState('');
   const [recipes, setRecipes] = useState([]);
-  // --- START: New State for UX ---
+ 
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [searched, setSearched] = useState(false); // To track if a search has been performed
+  const [searched, setSearched] = useState(false);
   const [resultsTitle, setResultsTitle] = useState('Featured Recipes');
-  // --- END: New State for UX ---
+ 
 
-  // --- START: Fetch initial recipes on page load ---
+ 
   useEffect(() => {
     const fetchInitialRecipes = () => {
       setIsLoading(true);
       setError(null);
-      // Fetching from a default category to show some initial recipes
+     
       const initialApiUrl = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood';
 
       fetch(initialApiUrl)
@@ -29,7 +29,7 @@ function App() {
             id: meal.idMeal,
             name: meal.strMeal,
             image: meal.strMealThumb
-          })).slice(0, 8); // Show the first 8 to keep it clean
+          })).slice(0, 8); 
           setRecipes(formatted);
         })
         .catch(err => {
@@ -40,23 +40,22 @@ function App() {
     };
 
     fetchInitialRecipes();
-  }, []); // The empty array ensures this runs only once on mount
-  // --- END: Fetch initial recipes ---
+  }, []);
 
 
   const handleSearch = (e) => {
     e.preventDefault();
-    if (!ingredients) return; // Prevent search if input is empty
+    if (!ingredients) return; 
 
     // Reset states for a new search
     setIsLoading(true);
     setError(null);
     setRecipes([]);
     setSearched(true);
-    setResultsTitle('Your Results'); // Change the title for search results
+    setResultsTitle('Your Results');
     console.log(`Frontend: Searching for recipes with: ${ingredients}`);
 
-    const API_URL = process.env.REACT_APP_API_URL; // backend URL from env
+    const API_URL = process.env.REACT_APP_API_URL;
 
     fetch(`${API_URL}/api/recipes?ingredients=${encodeURIComponent(ingredients)}`)
       .then(res => {
@@ -74,7 +73,7 @@ function App() {
         setError("Sorry, something went wrong. Please try again later.");
       })
       .finally(() => {
-        setIsLoading(false); // Stop loading in all cases
+        setIsLoading(false); 
       });
   };
 
@@ -98,7 +97,7 @@ function App() {
           </button>
         </form>
 
-        {/* --- START: Conditional Rendering for UX --- */}
+        
         <div className="results-container">
           {isLoading && <p className="loading-message">Searching for the best recipes...</p>}
           
@@ -127,13 +126,13 @@ function App() {
             ))}
           </div>
         </div>
-        {/* --- END: Conditional Rendering for UX --- */}
+       
       </main>
 
-      {/* This footer was missing from the previous version */}
+     
       <footer className="app-footer">
         <p>
-          Developed by Siddharth Singh | <a href="https://github.com/sidd1224/recipie-ideas" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+          Developed by Rao Siddharth Shankar | <a href="https://github.com/sidd1224/recipie-ideas" target="_blank" rel="noopener noreferrer">View on GitHub</a>
         </p>
       </footer>
     </div>
