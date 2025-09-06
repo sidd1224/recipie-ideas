@@ -4,18 +4,13 @@ import './App.css';
 function App() {
   const [ingredients, setIngredients] = useState('');
   const [recipes, setRecipes] = useState([]);
-  // We can add loading and error states later
-  // const [isLoading, setIsLoading] = useState(false);
+
 
   const handleSearch = (e) => {
     e.preventDefault();
     console.log(`Frontend: Searching for recipes with: ${ingredients}`);
 
-    // Construct the URL with query parameters. This is the new part.
-    const apiUrl = `http://localhost:5001/api/recipes?ingredients=${encodeURIComponent(ingredients)}`;
-
-    // Fetch data from our OWN backend
-    fetch(apiUrl)
+fetch(`/api/recipes?ingredients=${encodeURIComponent(ingredients)}`)
       .then(res => res.json())
       .then(data => {
         console.log("Frontend: Received data from backend:", data);
