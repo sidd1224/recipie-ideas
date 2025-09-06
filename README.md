@@ -3,7 +3,7 @@
 This is a full-stack web application built to solve the user need of finding recipe ideas based on a list of available ingredients. The project was developed as a take-home challenge, focusing on building a robust user-friendly interface and a scalable backend solution.
 
 ## Live Demo
-[ https://recipie-ideas-fuwtiphk4-sidd1224s-projects.vercel.app/ ]
+[ https://recipie-ideas.vercel.app/ ]
 
 ## Features
 - **Multi-Ingredient Search**: Users can enter a comma-separated list of ingredients to find matching recipes.
