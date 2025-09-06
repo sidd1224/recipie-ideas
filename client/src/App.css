@@ -186,7 +186,27 @@ body {
 .app-footer a:hover {
   color: #90cdf4; 
 }
+@media (max-width: 768px) {
+  .recipe-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
+  .App-header h1 {
+    font-size: 2rem;
+  }
+
+  .search-form {
+    flex-direction: column; 
+    gap: 0.75rem;
+  }
+}
+
+/* For mobile phones */
+@media (max-width: 480px) {
+  .recipe-grid {
+    grid-template-columns: 1fr; /* Switch to a single column */
+  }
+}
 
 
 
