@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
 body {
@@ -92,9 +93,9 @@ body {
   overflow: hidden;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   text-align: left;
-  position: relative;
+  position: relative; 
+
   transition: all 0.3s ease-in-out;
-  text-decoration: none; /* Added to remove underline from links */
 }
 
 
@@ -103,18 +104,13 @@ body {
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
-.recipe-card .image-container {
+.recipe-card img {
   width: 100%;
   height: 220px;
-  display: block;
-}
-
-.recipe-card .image-container img {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
   display: block;
 }
+
 
 .recipe-card .title-overlay {
   position: absolute;
@@ -125,24 +121,20 @@ body {
   background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
 }
 
+
 .recipe-card h3 {
   color: #fff;
   margin: 0;
   font-size: 1.3rem;
   font-weight: 600;
-  padding: 1rem; /* Simple padding for title */
 }
 
 
 .results-container {
   min-height: 200px;
-  margin-top: 2rem;
-  text-align: center;
 }
 
-.error-message,
-.loading-message,
-.no-results-message {
+.error-message {
   color: #f472b6;
   font-size: 1.2rem;
 }
@@ -162,47 +154,59 @@ body {
   100% { transform: rotate(360deg); }
 }
 
+.results-container {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.loading-message,
+.error-message,
+.no-results-message {
+  font-size: 1.2rem; 
+}
+
+.error-message {
+  color: #f56565;
+}
+
 .app-footer {
   margin-top: 4rem;
   padding: 1rem;
   text-align: center;
-  color: #718096;
-  border-top: 1px solid #4a5568;
+  color: #718096; 
+  border-top: 1px solid #4a5568; 
 }
 
 .app-footer a {
-  color: #63b3ed;
+  color: #63b3ed; 
   text-decoration: none;
   transition: color 0.2s ease-in-out;
 }
 
 .app-footer a:hover {
-  color: #90cdf4;
+  color: #90cdf4; 
 }
-
 @media (max-width: 768px) {
   .recipe-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
   .App-header h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
-  
+
   .search-form {
-    flex-direction: column;
+    flex-direction: column; 
     gap: 0.75rem;
-    align-items: center;
-    padding: 0 20px;
-  }
-  .search-input {
-      width: 100%;
   }
 }
 
+/* For mobile phones */
 @media (max-width: 480px) {
   .recipe-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Switch to a single column */
   }
 }
+
+
 
