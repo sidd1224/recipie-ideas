@@ -96,3 +96,12 @@ The project is organized into two main parts in a monorepo structure:
 
 - `/client`: Contains the React frontend application.
 - `/server`: Contains the Node.js/Express backend server.
+---
+
+## Video Demonstration
+
+A full walkthrough of the application, showcasing its features and functionality, is available here:
+
+**[Watch the Project Demo](https://youtu.be/4TxWKMMec8U?si=s4lJ02IMn1OH4Pnw)**
+
+---
