@@ -158,3 +158,40 @@ body {
   100% { transform: rotate(360deg); }
 }
 
+.results-container {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.loading-message,
+.error-message,
+.no-results-message {
+  font-size: 1.2rem;
+  color: #a0aec0; /* Cool Gray 400 */
+}
+
+.error-message {
+  color: #f56565; /* Red 500 */
+}
+
+.app-footer {
+  margin-top: 4rem;
+  padding: 1rem;
+  text-align: center;
+  color: #718096; /* Cool Gray 500 */
+  border-top: 1px solid #4a5568; /* Cool Gray 700 */
+}
+
+.app-footer a {
+  color: #63b3ed; /* Blue 400 */
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.app-footer a:hover {
+  color: #90cdf4; /* Blue 300 */
+}
+
+/* Make sure you keep all your other styles for .App, .search-form, .recipe-grid, etc. */
+/* Just add these new classes to your existing file. */
+
