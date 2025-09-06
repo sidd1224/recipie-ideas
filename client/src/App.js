@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
-// --- START: New RecipeCard Component for Performance ---
-// This component handles its own image loading state.
 const RecipeCard = ({ recipe }) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -28,21 +26,23 @@ const RecipeCard = ({ recipe }) => {
     </a>
   );
 };
-// --- END: New RecipeCard Component ---
-
 
 function App() {
   const [ingredients, setIngredients] = useState('');
   const [recipes, setRecipes] = useState([]);
+ 
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [searched, setSearched] = useState(false);
   const [resultsTitle, setResultsTitle] = useState('Featured Recipes');
+ 
 
+ 
   useEffect(() => {
     const fetchInitialRecipes = () => {
       setIsLoading(true);
       setError(null);
+     
       const initialApiUrl = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood';
 
       fetch(initialApiUrl)
@@ -55,7 +55,7 @@ function App() {
             id: meal.idMeal,
             name: meal.strMeal,
             image: meal.strMealThumb
-          })).slice(0, 8);
+          })).slice(0, 8); 
           setRecipes(formatted);
         })
         .catch(err => {
@@ -68,31 +68,38 @@ function App() {
     fetchInitialRecipes();
   }, []);
 
+
   const handleSearch = (e) => {
     e.preventDefault();
-    if (!ingredients) return;
+    if (!ingredients) return; 
 
+    // Reset states for a new search
     setIsLoading(true);
     setError(null);
     setRecipes([]);
     setSearched(true);
     setResultsTitle('Your Results');
+    console.log(`Frontend: Searching for recipes with: ${ingredients}`);
 
     const API_URL = process.env.REACT_APP_API_URL;
 
     fetch(`${API_URL}/api/recipes?ingredients=${encodeURIComponent(ingredients)}`)
       .then(res => {
-        if (!res.ok) throw new Error('Network response was not ok');
+        if (!res.ok) {
+          throw new Error('Network response was not ok');
+        }
         return res.json();
       })
       .then(data => {
+        console.log("Frontend: Received data from backend:", data);
         setRecipes(data);
       })
       .catch(err => {
+        console.error("Frontend: Fetch error:", err);
         setError("Sorry, something went wrong. Please try again later.");
       })
       .finally(() => {
-        setIsLoading(false);
+        setIsLoading(false); 
       });
   };
 
@@ -116,28 +123,42 @@ function App() {
           </button>
         </form>
 
+        
         <div className="results-container">
           {isLoading && <p className="loading-message">Searching for the best recipes...</p>}
+          
           {error && <p className="error-message">{error}</p>}
+
           {!isLoading && !error && recipes.length > 0 && (
             <h2 className="results-title">{resultsTitle}</h2>
           )}
+
           {!isLoading && !error && searched && recipes.length === 0 && (
             <p className="no-results-message">No matching recipes found. Try different ingredients!</p>
           )}
 
           <div className="recipe-grid">
-            {/* Use the new RecipeCard component */}
             {recipes.map((recipe) => (
-              <RecipeCard key={recipe.id} recipe={recipe} />
+              <a 
+                key={recipe.id} 
+                href={`https://www.themealdb.com/meal/${recipe.id}`} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="recipe-card"
+              >
+                <img src={recipe.image} alt={recipe.name} />
+                <h3>{recipe.name}</h3>
+              </a>
             ))}
           </div>
         </div>
+       
       </main>
 
+     
       <footer className="app-footer">
         <p>
-          Developed by Siddharth Singh | <a href="https://github.com/sidd1224/recipie-ideas" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+          Developed by Rao Siddharth Shankar | <a href="https://github.com/sidd1224/recipie-ideas" target="_blank" rel="noopener noreferrer">View on GitHub</a>
         </p>
       </footer>
     </div>
