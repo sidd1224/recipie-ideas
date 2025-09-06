@@ -5,18 +5,19 @@ function App() {
   const [ingredients, setIngredients] = useState('');
   const [recipes, setRecipes] = useState([]);
 
-
   const handleSearch = (e) => {
     e.preventDefault();
     console.log(`Frontend: Searching for recipes with: ${ingredients}`);
 
-fetch(`/api/recipes?ingredients=${encodeURIComponent(ingredients)}`)
-      .then(res => res.json())
-      .then(data => {
-        console.log("Frontend: Received data from backend:", data);
-        setRecipes(data); // Update the state with the recipes
+    const API_URL = process.env.REACT_APP_API_URL; // backend URL from env
+
+    fetch(`${API_URL}/api/recipes?ingredients=${encodeURIComponent(ingredients)}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log('Frontend: Received data from backend:', data);
+        setRecipes(data);
       })
-      .catch(err => console.error("Frontend: Fetch error:", err));
+      .catch((err) => console.error('Frontend: Fetch error:', err));
   };
 
   return (
@@ -39,7 +40,6 @@ fetch(`/api/recipes?ingredients=${encodeURIComponent(ingredients)}`)
           </button>
         </form>
 
-        {/* This is the new part for displaying recipes */}
         <div className="recipe-grid">
           {recipes.map((recipe) => (
             <div key={recipe.id} className="recipe-card">
@@ -54,4 +54,3 @@ fetch(`/api/recipes?ingredients=${encodeURIComponent(ingredients)}`)
 }
 
 export default App;
-
