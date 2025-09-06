@@ -1,17 +1,29 @@
 const express = require('express');
 const cors = require('cors');
-const fetch = require('node-fetch'); 
+const fetch = require('node-fetch');
 const app = express();
 
-// Middleware
-app.use(cors());
+const allowedOrigins = ['https://recipie-ideas.vercel.app'];
 
-// Test route
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+}));
+// --- END: CORS Configuration ---
+
+
+// Test route - you can keep this for debugging
 app.get('/api/test', (req, res) => {
   res.json({ message: "SUCCESS! The connection is working!" });
 });
 
-// Recipes route
+
+// Recipes route - your existing logic is perfect
 app.get('/api/recipes', async (req, res) => {
   const ingredients = req.query.ingredients;
   console.log(`Backend received a search request for: ${ingredients}`);
@@ -47,8 +59,10 @@ app.get('/api/recipes', async (req, res) => {
   }
 });
 
-// ✅ IMPORTANT: Start server on Railway’s port
-const PORT = process.env.PORT || 5000;
+
+// Start server on Railway’s port or a local default
+const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
